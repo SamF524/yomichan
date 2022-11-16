@@ -75,7 +75,7 @@
         "pages": [
             "template-renderer.html"
         ],
-        "content_security_policy": "sandbox allow-scripts; default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'unsafe-inline'"
+        "content_security_policy": "sandbox allow-scripts; default-src 'self' 'unsafe-inline'; connect-src *; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'unsafe-inline'"
     },
     "permissions": [
         "<all_urls>",

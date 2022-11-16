@@ -695,61 +695,20 @@ class AnkiTemplateRenderer {
     return this._japaneseUtil.convertHiraganaToKatakana(value)
   }
 
-  // async getWaniKaniAPIData(id) {
-  //   const options = {
-  //     hostname: 'https://api.wanikani.com',
-  //     path: `/v2/subjects/${id}`,
-  //     headers: {
-  //       Authorization: 'Bearer 29224f16-bca5-4f60-a6c3-9c885720ab32',
-  //     },
-  //   }
-
-  //   https
-  //     .get(options, res => {
-  //       console.log('statusCode:', res.statusCode)
-  //       console.log('headers:', res.headers)
-
-  //       res.on('data', d => {
-  //         console.log(d)
-  //       })
-  //     })
-  //     .on('error', e => {
-  //       console.error(e)
-  //     })
-  // }
-
-  // async getWaniKaniAPIData(id) {
-  //   let response = await fetch(`https://api.wanikani.com/v2/subjects/${id}`, {
-  //     method: 'GET',
-  //     headers: {
-  //       Authorization: 'Bearer 29224f16-bca5-4f60-a6c3-9c885720ab32',
-  //     },
-  //   })
-  //   let data = await response.json()
-  //   return data
-  //   // fetch(`https://api.wanikani.com/v2/subjects/${id}`, {
-  //   //   method: 'GET',
-  //   //   headers: {
-  //   //     Authorization: 'Bearer 29224f16-bca5-4f60-a6c3-9c885720ab32',
-  //   //   },
-  //   // })
-  //   //   .then(response => response.json())
-  //   //   .then(data => {
-  //   //     console.log('Success:', data)
-  //   //   })
-  //   //   .catch(error => {
-  //   //     console.error('Error:', error)
-  //   //   })
-  // }
-
   _wanikani(object) {
     const source = object.definition.source // rawSource is also an option
     const reading = object.definition.reading // in 平仮名
     const expression = object.definition.expression // if a verb, the non-past form
+    //! pass source and expression etc to wk api call here, then get api data back to here to return and add to template
+
     // wk key 29224f16-bca5-4f60-a6c3-9c885720ab32
     // GET https://api.wanikani.com/v2/subjects/<id> // gets a specific subject (radical, kanji, or vocab)
     // const wkData = this.getWaniKaniAPIData(1).then(console.log(`すごいな\n` + wkData))
-    console.log(object.definition)
-    return `Dummy wk data placeholder ${object.definition.expression}`
+    // curl "https://api.wanikani.com/v2/subjects/1" -H "Authorization: Bearer 29224f16-bca5-4f60-a6c3-9c885720ab32"
+    // console.log(object.definition)
+    // return `Dummy wk data placeholder ${object.definition.expression}`
+    // const wkData = await this._fetchWaniKani() // await?
+    // console.log(wkData)
+    return object.definition.expression
   }
 }

@@ -23,6 +23,28 @@
     <script src="/js/language/sandbox/dictionary-data-util.js"></script>
     <script src="/js/language/sandbox/japanese-util.js"></script>
     <script src="/js/templates/sandbox/anki-template-renderer.js"></script>
+
+    <!-- <div id="wk"></div> -->
+
+    <script>
+      const response = fetch('https://api.wanikani.com/v2/subjects/1', {
+        method: 'GET',
+        headers: {
+          Authorization: 'Bearer 29224f16-bca5-4f60-a6c3-9c885720ab32',
+          'Wanikani-Revision': '20170710',
+        },
+      })
+        .then(res => {
+          return res.json()
+          // document.getElementById('wk').innerHTML = data.url
+        })
+        .then(obj => {
+          console.log(obj.data.characters, obj.data.meanings)
+          // leaving off - wk api works finally,
+          // now figure out how to get yomichan source / expression to determine api call, then how to send data back to helper
+        })
+    </script>
+
     <script src="/js/templates/sandbox/anki-template-renderer-content-manager.js"></script>
     <script src="/js/templates/sandbox/template-renderer.js"></script>
     <script src="/js/templates/sandbox/template-renderer-frame-api.js"></script>
